@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: lb-service
+#  zipkin:
+#    base-url: kadan1:7777
