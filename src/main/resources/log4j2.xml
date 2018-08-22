@@ -2,12 +2,19 @@
 <configuration status="on">
   <appenders>  
     <Console name="Console" target="SYSTEM_OUT">  
-      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] [%l] %-5level %logger{36} - %msg%n"/>
+      <!--<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] [%l] %-5level %logger{36} - %msg%n"/>-->
+      <JsonLayout/>
     </Console>  
   </appenders>  
-  <loggers>  
-    <root level="trace">
-      <appender-ref ref="Console"/>  
-    </root>  
-  </loggers>  
+  <loggers>
+    <AsyncLogger name="AsyncLogger" level="trace" includeLocation="true">
+      <appender-ref ref="Console" />
+      <appender-ref ref="debugLog" />
+      <appender-ref ref="errorLog" />
+    </AsyncLogger>
+
+    <asyncRoot level="trace" includeLocation="true">
+      <appender-ref ref="Console" />
+    </asyncRoot>
+  </loggers>
 </configuration>
