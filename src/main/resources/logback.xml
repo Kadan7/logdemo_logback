@@ -6,11 +6,11 @@
     <property name="CONSOLE_LOG_PATTERN" value="%clr(${springAppName}) %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5P}) %clr(${springAppName:-}, %X{X-B3-TraceId:-}, %X{X-B3-SpanId:-}, %X{X-Span-Export:-}){yellow} %clr(${PID:-}){magenta} %clr(---){faint} %clr(%15.15t){faint} %clr(%-40.40logger{39}){cyan} %m%n{LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
                                                 "/>
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
-            <!--            <onMatch>ACCEPT</onMatch>
-                        <onMismatch>DENY</onMismatch>-->
-        </filter>
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+            <!--<level>TRACE</level>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <timestamp>
@@ -39,6 +39,11 @@
         <discardingThreshold>0</discardingThreshold>
         <queueSize>10</queueSize>
         <appender-ref ref="console"/>
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+            <!--<level>TRACE</level>-->
+            <!--<onMatch>ACCEPT</onMatch>-->
+            <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
     </appender>
 
     <appender name="logstash" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -79,8 +84,18 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
         <keepAliveDuration>1 minutes</keepAliveDuration>
     </appender>
-    <root level="INFO">
-        <appender-ref ref="async_log"/>
+
+    <logger name="com.kadan" level="trace">
+        <appender-ref ref="async_log" />
+    </logger>
+
+    <root level="info">
+        <!--<appender-ref ref="async_log"/>-->
         <appender-ref ref="console"/>
+
     </root>
+
+
+
+
 </configuration>
