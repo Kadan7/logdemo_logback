@@ -1,6 +1,6 @@
 package com.kadan.accountservice.web;
 
-import com.mysql.jdbc.log.LogFactory;
+
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.slf4j.Logger;
