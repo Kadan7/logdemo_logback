@@ -14,6 +14,8 @@ phases:
       - mvn install
       - echo Go to docker directory
       - cd docker
+      - echo What directory is it `pwd`
+      - pwd
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
