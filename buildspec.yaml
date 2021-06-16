@@ -12,6 +12,8 @@ build:
 commands:
   - echo Maven Installing package on `date`
   - mvn install
+  - echo Go to docker directory
+  - cd docker
   - echo Build started on `date`
   - echo Building the Docker image...
   - docker build -t $REPOSITORY_URI:latest .
