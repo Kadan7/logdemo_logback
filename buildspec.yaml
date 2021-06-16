@@ -16,6 +16,8 @@ phases:
       - cd docker
       - echo What directory is it `pwd`
       - pwd
+      - echo Copy jar to docker directory
+      - cp ./target/lb-service-1.0.jar ./docker/log.jar
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
