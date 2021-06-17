@@ -24,11 +24,11 @@ spec:
         app: flux-appl
     spec:
       containers:
-        - image: 460811381319.dkr.ecr.ap-southeast-1.amazonaws.com/logback-demo:production-v1
-          imagePullPolicy: IfNotPresent
-          name: flux-appl
-          ports:
-            - containerPort: 8080
+      - image: 460811381319.dkr.ecr.ap-southeast-1.amazonaws.com/logback-demo:production-cbfd60d
+        imagePullPolicy: IfNotPresent
+        name: flux-appl
+        ports:
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -37,9 +37,9 @@ metadata:
   name: flux-service
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
-      protocol: TCP
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
   type: NodePort
   selector:
     app.kubernetes.io/name: flux-appl
@@ -56,9 +56,9 @@ metadata:
     alb.ingress.kubernetes.io/group.name: junjie-alb-group
 spec:
   rules:
-    - http:
-        paths:
-          - path: /demo/*
-            backend:
-              serviceName: flux-service
-              servicePort: 8080
+  - http:
+      paths:
+      - path: /demo/*
+        backend:
+          serviceName: flux-service
+          servicePort: 8080
