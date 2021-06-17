@@ -24,7 +24,7 @@ spec:
         app: flux-appl
     spec:
       containers:
-      - image: 460811381319.dkr.ecr.ap-southeast-1.amazonaws.com/logback-demo:production-cbfd60d
+      - image: 460811381319.dkr.ecr.ap-southeast-1.amazonaws.com/logback-demo:production-3fd1982
         imagePullPolicy: IfNotPresent
         name: flux-appl
         ports:
